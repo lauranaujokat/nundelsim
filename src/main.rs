@@ -1,7 +1,7 @@
 use raylib::prelude::*;
 
-const WIDTH: i32 = 2560;
-const HEIGHT: i32 = 1080;
+const WIDTH: i32 = 800;
+const HEIGHT: i32 = 800;
 const WANTED_FPS: i32 = 60;
 const GRAVITY: Vector2 = Vector2::new(0., 9.8);
 
@@ -48,7 +48,7 @@ fn main() {
     let mut ball = Ball::new(
         Vector2::new((WIDTH / 2) as f32, 0.),
         Vector2::new(0., 0.),
-        Color::BLACK,
+        Color::RED,
         10.,
     );
 
@@ -61,6 +61,6 @@ fn main() {
         ball.gravity(dt);
         ball.apply_speed(dt);
 
-        draw_handle.clear_background(Color::WHITE);
+        draw_handle.clear_background(Color::BLACK);
     }
 }
