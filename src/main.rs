@@ -41,6 +41,10 @@ impl Ball {
 fn main() {
     let (mut raylib_handle, thread) = raylib::init().size(WIDTH, HEIGHT).title("nudelsim").build();
     raylib_handle.set_target_fps(WANTED_FPS as u32);
+
+    // 1 second per second
+    let simulation_speed: f32 = 1.0;
+
     let mut ball = Ball::new(
         Vector2::new((WIDTH / 2) as f32, 0.),
         Vector2::new(0., 0.),
@@ -50,8 +54,7 @@ fn main() {
 
     while !raylib_handle.window_should_close() {
         let frame_time = raylib_handle.get_frame_time();
-        let dt = frame_time / (1.0 / WANTED_FPS as f32);
-        dbg!(dt);
+        let dt = frame_time / (1.0 / simulation_speed);
 
         let mut draw_handle = raylib_handle.begin_drawing(&thread);
         ball.draw(&mut draw_handle);
