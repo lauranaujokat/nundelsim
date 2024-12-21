@@ -1,7 +1,9 @@
 use raylib::prelude::*;
+
 const WIDTH: i32 = 2560;
 const HEIGHT: i32 = 1080;
 const GRAVITY: Vector2 = Vector2::new(0., 9.8);
+
 #[derive(Debug)]
 struct Ball {
     position: Vector2,
@@ -10,10 +12,10 @@ struct Ball {
     radius: f32,
 }
 impl Ball {
-    fn new(location: Vector2, speed: Vector2, color: Color, radius: f32) -> Self {
+    fn new(position: Vector2, velocity: Vector2, color: Color, radius: f32) -> Self {
         Ball {
-            position: location,
-            velocity: speed,
+            position,
+            velocity,
             color,
             radius,
         }
