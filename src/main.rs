@@ -4,34 +4,34 @@ const HEIGHT: i32 = 1080;
 const GRAVITY: Vector2 = Vector2::new(0., 9.8);
 #[derive(Debug)]
 struct Ball {
-    location: Vector2,
-    speed: Vector2,
+    position: Vector2,
+    velocity: Vector2,
     color: Color,
     radius: f32,
 }
 impl Ball {
     fn new(location: Vector2, speed: Vector2, color: Color, radius: f32) -> Self {
         Ball {
-            location,
-            speed,
+            position: location,
+            velocity: speed,
             color,
             radius,
         }
     }
     fn draw(&self, draw_handle: &mut RaylibDrawHandle) {
         draw_handle.draw_circle(
-            self.location.x as i32,
-            self.location.y as i32,
+            self.position.x as i32,
+            self.position.y as i32,
             self.radius,
             self.color,
         )
     }
     fn gravity(&mut self, frame_time: f32) {
-        dbg!(self.speed);
-        self.speed += GRAVITY * frame_time;
+        dbg!(self.velocity);
+        self.velocity += GRAVITY * frame_time;
     }
     fn apply_speed(&mut self, frame_time: f32) {
-        self.location += self.speed * frame_time;
+        self.position += self.velocity * frame_time;
     }
 }
 
